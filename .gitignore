@@ -1,0 +1,19 @@
+# Secrets - NEVER commit these
+.env
+.streamlit/secrets.toml
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment (too big, and rebuilt from requirements.txt)
+.venv/
+venv/
+
+# Generated output files
+output.xlsx
+product_descriptions.xlsx
+
+# Editor / OS junk
+.vscode/
+.DS_Store
