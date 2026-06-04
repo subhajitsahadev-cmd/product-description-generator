@@ -1,0 +1,9 @@
+langchain
+langchain-mistralai
+langchain-core
+pydantic
+pandas
+openpyxl
+python-dotenv
+rich
+streamlit
