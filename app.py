@@ -18,13 +18,26 @@ watch the progress bar, preview the results, and download the Excel.
 import io
 import pandas as pd
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 from generator import build_pipeline, generate_for_product
 from main import flatten          # reuse the exact same flatten() from main.py
 
 # Load the OPENAI_API_KEY from your .env file
+# load_dotenv()
+
+import os
+from dotenv import load_dotenv
+
+# Local: read .env file. Cloud: read Streamlit secrets.
 load_dotenv()
+if "MISTRAL_API_KEY" in st.secrets:
+    os.environ["MISTRAL_API_KEY"] = st.secrets["MISTRAL_API_KEY"]
+
+# Fail loudly with a clear message instead of a blank crash
+if not os.getenv("MISTRAL_API_KEY"):
+    st.error("MISTRAL_API_KEY is missing. Add it in Settings → Secrets.")
+    st.stop()
 
 # ---------- page setup ----------
 st.set_page_config(page_title="AI Product Description Generator", page_icon="🛍️")
